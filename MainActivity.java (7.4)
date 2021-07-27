@@ -1,0 +1,46 @@
+//Viia Mäntymäki
+//lähteet: oppimateriaali ja https://www.youtube.com/watch?v=eEWhrqmkP5c
+
+
+
+package com.example.t74;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        EditText edit = (EditText) findViewById(R.id.editTextTextPersonName);
+        TextView text = (TextView) findViewById(R.id.textView);
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(! edit.getText().toString().equals("")){
+                    text.setText(edit.getText().toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
+        edit.addTextChangedListener(textWatcher);
+    }
+}
